@@ -1,0 +1,5 @@
+alias size='du -sxh *'
+alias ls='ls -G'
+alias ll='ls -Gla'
+alias f='function _f(){ find . -xdev -not -path "*/\.*" -iname "*$1*" 2> /dev/null; }; _f'
+alias s='git status'
