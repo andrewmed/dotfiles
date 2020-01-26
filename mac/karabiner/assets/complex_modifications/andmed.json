@@ -86,6 +86,76 @@
           ],
           "type": "basic",
           "from": {
+            "key_code": "right_alt",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "language": "^en$"
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "select_input_source": {
+                "language": "^ru$"
+              }
+            }
+          ]
+        },
+        {
+        "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "language": "en"
+                }
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "right_alt",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "language": "^ru$"
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "select_input_source": {
+                "language": "^en$"
+              }
+            }
+          ]
+        },
+	{
+        "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "language": "ru"
+                }
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
             "key_code": "right_gui",
             "modifiers": {
               "optional": [
