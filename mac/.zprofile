@@ -2,6 +2,9 @@ setopt appendhistory
 setopt INC_APPEND_HISTORY  
 setopt SHARE_HISTORY
 
+HISTSIZE=20000
+SAVEHIST=10000
+
 export GOPATH="$HOME/code/go"
 export GOROOT="$HOME/code/goroot"
 export PATH="$GOROOT/bin:$PATH"
