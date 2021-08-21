@@ -1,212 +1,193 @@
-# osascript -e 'tell application "System Preferences" to quit'
-
-# #Finder
-
-# # Show icons for hard drives, servers, and removable media on the desktop
-# #defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-# #defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-# #defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-# #defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-
-# # Finder: show all filename extensions
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# # When performing a search, search the current folder by default
-# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-
-# # Disable disk image verification
-# defaults write com.apple.frameworks.diskimages skip-verify -bool true
-# defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-# defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
-# # Show the ~/Library folder
-# chflags nohidden ~/Library
-
-# # Show the /Volumes folder
-# sudo chflags nohidden /Volumes
-
-
-# # Expand the following File Info panes:
-# # “General”, “Open with”
-# #defaults write com.apple.finder FXInfoPanesExpanded -dict \
-#     #General -bool true \
-#     #OpenWith -bool true 
-
-
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-
-# # Enable AirDrop over Ethernet and on unsupported Macs running Lion
-# #defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
-# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-
-
-# # Expand save panel by default
-# defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-# defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-# # Expand print panel by default
-# defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-# defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# # Save to disk (not to iCloud) by default
-# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# # Prevent Time Machine from prompting to use new hard drives as backup volume	
-# defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# # key repeat for all apps
-# defaults write -g ApplePressAndHoldEnabled -bool false
-
-# # Automatically quit printer app once the print jobs complete
-# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
-# # Disable the crash reporter
-# defaults write com.apple.CrashReporter DialogType -string "none"
-
-# # Never go into computer sleep mode
-# #sudo systemsetup -setcomputersleep Off > /dev/null
-
-# # Enable Debug Menu in the Mac App Store
-# defaults write com.apple.appstore ShowDebugMenu -bool true
-
-# # Disable smart quotes as they’re annoying when typing code
-# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# # Disable smart dashes as they’re annoying when typing code
-# defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# # Set a blazingly fast keyboard repeat rate
-# #defaults write NSGlobalDomain KeyRepeat -int 1
-# #defaults write NSGlobalDomain InitialKeyRepeat -int 10
-
-# #Disable auto-correct
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# #Safari
-# # Privacy: don’t send search queries to Apple
-# defaults write com.apple.Safari UniversalSearchEnabled -bool false
-# defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-# # Show the full URL in the address bar (note: this still hides the scheme)
-# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# # Set Safari’s home page to `about:blank` for faster loading
-# defaults write com.apple.Safari HomePage -string "about:blank"
-
-# # Enable Safari’s debug menu
-# defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-# # Enable the Develop menu and the Web Inspector in Safari
-# defaults write com.apple.Safari IncludeDevelopMenu -bool true
-# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# # Add a context menu item for showing the Web Inspector in web views
-# defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# # Enable continuous spellchecking
-# defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
-# # Disable auto-correct
-# defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
-# # Disable sportlignt for all /Volumes
-# # may need manipulation
-# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
-
-
-# # short ======================================
-
-# osascript -e 'tell application "System Preferences" to quit'
-
-# # Finder: show all filename extensions
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# # When performing a search, search the current folder by default
-# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-
-
-
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# # Save to disk (not to iCloud) by default
-# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# # Prevent Time Machine from prompting to use new hard drives as backup volume	
-# defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# # key repeat for all apps
-# defaults write -g ApplePressAndHoldEnabled -bool false
-
-# # Show the full URL in the address bar (note: this still hides the scheme)
-# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# # Set Safari’s home page to `about:blank` for faster loading
-# defaults write com.apple.Safari HomePage -string "about:blank"
-
-# # Enable Safari’s debug menu
-# defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-# # Enable the Develop menu and the Web Inspector in Safari
-# defaults write com.apple.Safari IncludeDevelopMenu -bool true
-# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# # Add a context menu item for showing the Web Inspector in web views
-# defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# # Enable continuous spellchecking
-# defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
-# # Disable auto-correct
-# defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
+set -e
+set -x
 
 
 osascript -e 'tell application "System Preferences" to quit'
 
-# Finder: show all filename extensions
+
+#csrutil disable; csrutil enable
+#dsenableroot 
+#sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.bluetoothReporter.plist 
+#sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.bluetoothd.plist 
+#sudo mdutil -a -i off/on
+#sudo nvram BootAudio=%00
+
+
+DevToolsSecurity -enable
+defaults Write com.apple.finder AnimateSnapToGrid -bool false
+defaults write  com.apple.frameworks.diskimages skip-verify -bool true
+defaults write  com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write  com.apple.frameworks.diskimages skip-verify-remote -bool true
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
+defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+defaults write -g NSScrollAnimationEnabled -bool false
+defaults write -g NSScrollViewRubberbanding -bool false
+defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+defaults write -g NSToolbarTitleViewRolloverDelay -float 0
+defaults write -g NSWindowResizeTime -float 0.001
+defaults write -g QLPanelAnimationDuration -float 0
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# When performing a search, search the current folder by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+defaults write com.apple.CrashReporter DialogType none	
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write com.apple.Mail DisableReplyAnimations -bool true
+defaults write com.apple.Mail DisableSendAnimations -bool true
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+defaults write com.apple.Safari HomePage -string "about:blank"
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.1
+defaults write com.apple.Safari WebKitResourceTimedLayoutDelay 0.1
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+defaults write com.apple.Terminal FocusFollowsMouse -string YES
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# Prevent Time Machine from prompting to use new hard drives as backup volume\t
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# key repeat for all apps
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-# Show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
-
-# Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-# Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# Add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Enable continuous spellchecking
-defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
-# Disable auto-correct
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock expose-animation-duration -float 0
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock springboard-hide-duration -float 0
+defaults write com.apple.dock springboard-page-duration -float 0
+defaults write com.apple.dock springboard-show-duration -float 0
+defaults write com.apple.dock workspaces-edge-delay -float 0
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES	
+defaults write com.apple.dt.Xcode BuildSystemScheduleInherentlyParallelCommandsExclusively -bool YES
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES
+defaults write com.apple.finder AnimateInfoPanes -bool false
+defaults write com.apple.finder AppleShowAllFiles true
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults write com.apple.finder FXEnableSlowAnimation -bool false
+defaults write com.apple.finder QLEnableSlowMotion -bool false
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.iphonesimulator AllowFullscreenMode -bool YES
+defaults write com.apple.screencapture location ~/Downloads/
+defaults write com.apple.universalaccess reduceTransparency -bool true
+launchctl unload -w /System/Library/LaunchAgents/com.apple.AMPLibraryAgent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.AirPlayUIAgent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.FollowUpUI.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportGPURestart.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportPanic.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.Safari.SafeBrowsing.Service.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.SafeEjectGPUAgent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ScreenTimeAgent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.SocialPushAgent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.UsageTrackingAgent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.WiFiVelocityAgent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.alf.useragent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.amsaccountsd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.amsengagementd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ap.adprivacyd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ap.adservicesd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.appleseed.seedusaged.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.assessmentagent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.assistant_service.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.assistantd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.avatarsd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.cloudphotod.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.contacts.donation-agent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.coreparsec.silhouette.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.coreservices.useractivityd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.corespeechd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.corespotlightd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.diagnosticextensionsd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.diagnostics_agent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.dmd.agent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.familycircled.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.familycontrols.useragent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.familynotificationd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.followupd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.helpd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.homed.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.icloud.findmydeviced.findmydevice-user-agent.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.icloud.fmfd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.knowledge-agent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.macos.studentd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.mediaanalysisd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.mediaremoteagent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.networkserviceproxy-osx.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.parentalcontrols.check.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.parsec-fbf.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.parsecd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.photoanalysisd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.photolibraryd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.progressd.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.reversetemplated.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.routined.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.speech.synthesisserver.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.spindump_agent.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.suggestd.plist 
+launchctl unload -w /System/Library/LaunchAgents/com.apple.symptomsd-diag.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.sysdiagnose_agent.plist
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -int 0
+sudo defaults write /Library/Preferences/com.apple.security.revocation.plist CRLStyle None
+sudo defaults write /Library/Preferences/com.apple.security.revocation.plist OCSPStyle None
+sudo defaults write /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist ProgramArguments -array-add "-NoMulticastAdvertisements"
+sudo defaults write com.apple.security.revocation.plist CRLStyle None
+sudo defaults write com.apple.security.revocation.plist OCSPStyle None
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.AirPlayXPCHelper.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.CrashReporterSupportHelper.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.DumpGPURestart.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.DumpPanic.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.GameController.gamecontrollerd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InstallerDiagnostics.installerdiagd.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InstallerDiagnostics.installerdiagwatcher.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.PerfPowerServices.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportMemoryException.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.SafeEjectGPUStartupDaemon.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.SubmitDiagInfo.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.analyticsd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.appleseed.fbahelperd.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.applessdstatistics.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.aslmanager.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.awdd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.backupd-helper.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.backupd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.coreduetd.osx.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.coresymbolicationd.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.diagnosticd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dprivacyd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.emond.aslmanager.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.emond.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.endpointsecurity.endpointsecurityd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.familycontrols.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.findmymac.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.findmymacmessenger.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.icloud.findmydeviced.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.icloud.searchpartyd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.jetsamproperties.Mac.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.logd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.managedconfiguration.teslad.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mediaremoted.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mobileassetd.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.revisiond.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.rtcreportingd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.sandboxd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.spindump.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.symptomsd-diag.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.symptomsd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.sysdiagnose.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.syslogd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.systemstats.analysis.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.systemstats.daily.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.systemstats.microstackshot_periodic.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.tailspind.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.watchdogd.plist 
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.wifianalyticsd.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.wifivelocityd.plist 
 sudo spctl --master-disable
+sudo systemsetup -setcomputersleep Never
