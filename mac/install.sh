@@ -2,8 +2,10 @@ set -e
 set -x
 
 
-#brew install vlc
-#brew install maccy
+brew install vlc
+brew install maccy
+brew install firefox
+brew install chromium
 brew install duti
 
 set_default() {
