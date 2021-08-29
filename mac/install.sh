@@ -2,8 +2,8 @@ set -e
 set -x
 
 
-#brew install vlc
-#brew install maccy
+brew install vlc
+brew install maccy
 brew install duti
 
 set_default() {
@@ -15,7 +15,6 @@ set_default() {
 }
 
 # Find AppID: osascript -e 'id of app "VLC"'
-
 VIDEO_APP=org.videolan.vlc
 AUDIO_APP=org.videolan.vlc
 

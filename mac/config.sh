@@ -51,6 +51,7 @@ defaults write com.apple.finder QLEnableSlowMotion -bool false
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.iphonesimulator AllowFullscreenMode -bool YES
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool no
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
@@ -198,4 +199,4 @@ sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.wifivelocityd.p
 sudo scutil --set ComputerName "desktop"
 sudo scutil --set LocalHostName "desktop"
 sudo spctl --master-disable
-sudo systemsetup -setcomputersleep Never
+#sudo systemsetup -setcomputersleep Never
