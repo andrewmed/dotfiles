@@ -200,3 +200,5 @@ sudo scutil --set ComputerName "desktop"
 sudo scutil --set LocalHostName "desktop"
 sudo spctl --master-disable
 #sudo systemsetup -setcomputersleep Never
+
+pwpolicy -u andy -setpolicy "maxFailedLoginAttempts=5"
