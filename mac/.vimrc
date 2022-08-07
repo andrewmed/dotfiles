@@ -1,4 +1,5 @@
 source $VIMRUNTIME/defaults.vim
+syntax on
 set mouse-=a
 set ignorecase
 set hlsearch
