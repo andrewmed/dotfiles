@@ -27,6 +27,17 @@ alias st='git status'
 SUGGESTIONS='/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
 if [ -f $SUGGESTIONS ]; then
     . $SUGGESTIONS
-    bindkey '^I'   complete-word       # tab          | complete
-    bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 fi
+
+if [ -d $HOME/code/goroot ]; then
+    export GOROOT="$HOME/code/goroot"
+    export PATH="$GOROOT/bin:$PATH"
+fi
+
+if [ -d $HOME/code/go ]; then
+    export GOPATH="$HOME/code/go"
+    export PATH="$GOPATH/bin:$PATH"
+fi
+
+
+
