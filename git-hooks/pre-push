@@ -1,0 +1,13 @@
+#!/bin/sh
+# Prevents force-pushing to master
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+PROTECTED_BRANCHES="^(master|dev|release-*|patch-*)"
+FORCE_PUSH="force|delete|-f"
+
+if [[ "$BRANCH" = "master" ]]; then
+  echo "Prevented push to protected branch \"$BRANCH\" by pre-push hook"
+  exit 1
+fi
+
+exit 0

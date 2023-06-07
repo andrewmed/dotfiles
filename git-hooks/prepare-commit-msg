@@ -1,0 +1,7 @@
+#!/bin/sh
+# Add a custom message to the commit message
+# Add your custom logic here
+
+# Example: Add branch name to commit message
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+echo "[$BRANCH_NAME] $(cat $1)" > $1
