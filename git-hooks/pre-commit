@@ -1,8 +1,13 @@
 #!/bin/sh
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
+URL=$(git config --get remote.origin.url)
 
-if [ "$branch" = "master" ]; then
-  echo "You can't commit directly to master branch"
-  exit 1
+if [[ "$URL" = *"propellerads"* ]]; then
+  if [ "$branch" = "master" ]; then
+    echo "You can't commit directly to master branch"
+    exit 1
+  fi
+else
+  exit 0
 fi

@@ -2,12 +2,19 @@
 # Prevents force-pushing to master
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+URL=$(git config --get remote.origin.url)
 PROTECTED_BRANCHES="^(master|dev|release-*|patch-*)"
 FORCE_PUSH="force|delete|-f"
 
-if [[ "$BRANCH" = "master" ]]; then
-  echo "Prevented push to protected branch \"$BRANCH\" by pre-push hook"
-  exit 1
+if [[ "$URL" = *"propellerads"* ]]; then
+  if [[ "$BRANCH" = "master" ]]; then
+    echo "Prevented push to protected branch \"$BRANCH\" by pre-push hook"
+    exit 1
+  fi
+else
+  exit 0
 fi
+
+
 
 exit 0
