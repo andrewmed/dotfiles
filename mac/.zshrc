@@ -15,7 +15,7 @@ setopt share_history
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 PROMPT_EOL_MARK=""
 
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history_all
 HISTSIZE=40000
 SAVEHIST=50000
 

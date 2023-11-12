@@ -5,3 +5,5 @@
 [user]
 	name = andmed
 	email = git@andmed.org
+[core]
+	excludesfile = ~/.gitignore
