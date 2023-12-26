@@ -52,7 +52,7 @@ set -e
 set -x
 spctl developer-mode enable-terminal
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NAME
-sudo nvram BootAudio=%00
+#sudo nvram BootAudio=%00
 sudo scutil --set ComputerName $NAME
 sudo scutil --set LocalHostName $NAME
 
