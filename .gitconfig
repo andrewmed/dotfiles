@@ -7,3 +7,5 @@
 	email = git@andmed.org
 [core]
 	excludesfile = ~/.gitignore
+[push]
+	autoSetupRemote = true

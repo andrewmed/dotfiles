@@ -7,11 +7,14 @@ defaults write -g NSToolbarFullScreenAnimationDuration -float 0
 defaults write -g NSToolbarTitleViewRolloverDelay -float 0
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write -g QLPanelAnimationDuration -float 0
+defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write com.apple.CrashReporter DialogType none	
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
@@ -42,6 +45,7 @@ defaults write com.apple.finder FXDefaultSearchScope SCcf
 defaults write com.apple.finder FXEnableExtensionsChangeWarning -bool false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
+defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
 NAME=pro # FIXME
 osascript -e 'tell application "System Preferences" to quit'
 set -e
@@ -51,3 +55,9 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 sudo nvram BootAudio=%00
 sudo scutil --set ComputerName $NAME
 sudo scutil --set LocalHostName $NAME
+
+# /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs
+# /Library/Preferences/SystemConfiguration/preferences.plist
+#sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs JoinMode=Strongest
+#sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs JoinModeFallback=KeepLooking
+# set mtu lower
