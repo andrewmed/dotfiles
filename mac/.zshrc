@@ -1,5 +1,6 @@
 export LESS=-Ri
 export PROMPT='%n@%m %1~%# '
+export HOMEBREW_NO_ANALYTICS=1
 
 bindkey -e                                        # emacs key bindings
 

@@ -1,13 +1,15 @@
 set -e
 set -x
 
-
+brew install ripgrep fd tree wget
 brew install vlc
 brew install maccy
 brew install firefox
 #brew install chromium
-brew install visual-studio-code
+#brew install visual-studio-code
 brew install duti
+brew install dockutil
+
 
 set_default() {
     duti -s "${1:-"UNKNOWN_APP_ID"}" ".${2:-"UNKNOWN-EXT"}" all
@@ -20,7 +22,7 @@ set_default() {
 # Find AppID: osascript -e 'id of app "VLC"'
 VIDEO_APP=org.videolan.vlc
 AUDIO_APP=org.videolan.vlc
-CODE_APP=com.microsoft.VSCode
+#CODE_APP=com.microsoft.VSCode
 
 # Video
 set_default "${VIDEO_APP}" avi
@@ -39,33 +41,44 @@ set_default "${AUDIO_APP}" m3u
 set_default "${AUDIO_APP}" pls
 
 #Code
-set_default "${CODE_APP}" asm
-set_default "${CODE_APP}" c
-set_default "${CODE_APP}" cc
-set_default "${CODE_APP}" conf
-set_default "${CODE_APP}" cpp
-set_default "${CODE_APP}" css
-set_default "${CODE_APP}" csv
-set_default "${CODE_APP}" go
-set_default "${CODE_APP}" h
-set_default "${CODE_APP}" java
-set_default "${CODE_APP}" js
-set_default "${CODE_APP}" json
-set_default "${CODE_APP}" kt
-set_default "${CODE_APP}" less
-set_default "${CODE_APP}" log
-set_default "${CODE_APP}" php
-set_default "${CODE_APP}" plist
-set_default "${CODE_APP}" proto
-set_default "${CODE_APP}" py
-set_default "${CODE_APP}" rtf
-set_default "${CODE_APP}" sass
-set_default "${CODE_APP}" sh
-set_default "${CODE_APP}" sql
-set_default "${CODE_APP}" toml
-set_default "${CODE_APP}" ts
-set_default "${CODE_APP}" txt
-set_default "${CODE_APP}" xml
-set_default "${CODE_APP}" yaml
-set_default "${CODE_APP}" yml
+#set_default "${CODE_APP}" asm
+#set_default "${CODE_APP}" c
+#set_default "${CODE_APP}" cc
+#set_default "${CODE_APP}" conf
+#set_default "${CODE_APP}" cpp
+#set_default "${CODE_APP}" css
+#set_default "${CODE_APP}" csv
+#set_default "${CODE_APP}" go
+#set_default "${CODE_APP}" h
+#set_default "${CODE_APP}" java
+#set_default "${CODE_APP}" js
+#set_default "${CODE_APP}" json
+#set_default "${CODE_APP}" kt
+#set_default "${CODE_APP}" less
+#set_default "${CODE_APP}" log
+#set_default "${CODE_APP}" php
+#set_default "${CODE_APP}" plist
+#set_default "${CODE_APP}" proto
+#set_default "${CODE_APP}" py
+#set_default "${CODE_APP}" rtf
+#set_default "${CODE_APP}" sass
+#set_default "${CODE_APP}" sh
+#set_default "${CODE_APP}" sql
+#set_default "${CODE_APP}" toml
+#set_default "${CODE_APP}" ts
+#set_default "${CODE_APP}" txt
+#set_default "${CODE_APP}" xml
+#set_default "${CODE_APP}" yaml
+#set_default "${CODE_APP}" yml
 
+# clean dock
+dockutil --remove "Maps" --no-restart
+dockutil --remove "FaceTime" --no-restart
+dockutil --remove "Contacts" --no-restart
+dockutil --remove "Calendar" --no-restart
+dockutil --remove "Reminders" --no-restart
+dockutil --remove "Freeform" --no-restart
+dockutil --remove "TV" --no-restart
+dockutil --remove "Music" --no-restart
+dockutil --remove "Photos" --no-restart
+dockutil --remove "Messages" --no-restart

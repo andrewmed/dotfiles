@@ -1,3 +1,4 @@
+set -x
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
 defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
@@ -16,12 +17,8 @@ defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write com.apple.CrashReporter DialogType none	
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool false
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+#defaults write com.apple.LaunchServices LSQuarantine -bool false
+#defaults write -g WebKitDeveloperExtras -bool true
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 defaults write com.apple.TextEdit RichText -bool false
@@ -40,19 +37,40 @@ defaults write com.apple.dock workspaces-edge-delay -float 0
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES	
 defaults write com.apple.dock wvous-bl-corner -int 4 # Desktop
 defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-tr-corner -int 13
+defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.finder FXDefaultSearchScope SCcf
 defaults write com.apple.finder FXEnableExtensionsChangeWarning -bool false
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
-defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+#defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+
+defaults write com.apple.mail ConversationViewSortDescending -bool true
+defaults write com.apple.mail SendFormat Plain
+defaults write com.apple.universalaccess reduceTransparency -bool true
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+
+chflags nohidden ~/Library
+
+
+# Disable timemachine
+sudo tmutil disable
+
+# Stop Responding to Key Presses itunes
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+
 NAME=pro # FIXME
 osascript -e 'tell application "System Preferences" to quit'
-set -e
-set -x
-spctl developer-mode enable-terminal
+#spctl developer-mode enable-terminal
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NAME
-#sudo nvram BootAudio=%00
+sudo nvram StartupMute=%01
+
+#Spotlight
+#sudo mdutil -i off -d /Volumes
+#sudo mdutil -a -i off
+
 sudo scutil --set ComputerName $NAME
 sudo scutil --set LocalHostName $NAME
 
