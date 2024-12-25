@@ -16,6 +16,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none	
 #defaults write com.apple.LaunchServices LSQuarantine -bool false
 #defaults write -g WebKitDeveloperExtras -bool true
@@ -42,7 +43,7 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.finder DisableAllAnimations -bool true
 defaults write com.apple.finder FXDefaultSearchScope SCcf
 defaults write com.apple.finder FXEnableExtensionsChangeWarning -bool false
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+defaults write com.apple.finder FXPreferredViewStyle -string clmv
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 #defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
@@ -51,6 +52,10 @@ defaults write com.apple.mail ConversationViewSortDescending -bool true
 defaults write com.apple.mail SendFormat Plain
 defaults write com.apple.universalaccess reduceTransparency -bool true
 defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+
+
+defaults write com.apple.screencapture show-thumbnail -bool FALSE
+
 
 chflags nohidden ~/Library
 

@@ -3,3 +3,10 @@
 .vscode/
 .env/
 andmed/
+venv/
+secret.yaml
+*.log
+/main
+secret.env
+pyrightconfig.json
+.zed/
