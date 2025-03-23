@@ -40,5 +40,4 @@ if [ -d $HOME/code/go ]; then
     export PATH="$GOPATH/bin:$PATH"
 fi
 
-
-
+[ -f /usr/local/etc/zshenv ] && source /usr/local/etc/zshenv
