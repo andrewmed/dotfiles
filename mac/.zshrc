@@ -40,4 +40,19 @@ if [ -d $HOME/code/go ]; then
     export PATH="$GOPATH/bin:$PATH"
 fi
 
+function ai() {
+  local prompt="$@"
+  curl -s -X POST "https://api.anthropic.com/v1/messages" \
+    -H "x-api-key: ${ANTHROPIC_API_KEY}" \
+    -H "anthropic-version: 2023-06-01" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-3-7-sonnet-20250219",
+      "max_tokens": 80,
+      "messages": [
+        {"role": "user", "content": "Suggest a zsh command for: '"${prompt}"'.\nOutput only the command, no explanation."}
+      ]
+    }' | jq -r '.content[0].text'
+}
+
 [ -f /usr/local/etc/zshenv ] && source /usr/local/etc/zshenv
