@@ -10,7 +10,7 @@ setopt notify              # report the status of background jobs immediately
 setopt numericglobsort     # sort filenames numerically when it makes sense
 
 setopt appendhistory
-setopt inc_append_history
+setopt inc_append_history  
 setopt share_history
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
@@ -52,6 +52,21 @@ function ai() {
       "messages": [
         {"role": "user", "content": "Suggest a zsh command for: '"${prompt}"'.\nOutput only the command, no explanation."}
       ]
+  }' | jq -r 'if .type == "error" then .error.message else .content[0].text end'
+}
+
+
+function ai2() {
+  local prompt="$@"
+  curl -s -X POST "https://api.x.ai/v1/messages" \
+    -H "Authorization: Bearer ${XAI_API_KEY}" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "max_tokens": 80,
+      "messages": [
+                  {"role": "user", "content": "Suggest a zsh command for: '"${prompt}"'.\nOutput only the command, no explanation."}
+                ],
+      "model": "grok-2-latest"
   }' | jq -r 'if .type == "error" then .error.message else .content[0].text end'
 }
 

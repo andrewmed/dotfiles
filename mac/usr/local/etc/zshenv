@@ -2,4 +2,5 @@
 
 export ANTHROPIC_API_KEY=$(security find-generic-password -a "$USER" -s "ANTHROPIC_API_KEY" -w) 2> /dev/null
 export OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "OPENAI_API_KEY" -w) 2> /dev/null
+export XAI_API_KEY=$(security find-generic-password -a "$USER" -s "XAI_API_KEY" -w) 2> /dev/null
 
