@@ -4,6 +4,7 @@ set -x
 brew install maccy
 brew install brave-browser
 brew install zed
+brew install gh
 brew install jq
 brew install mutagen-io/mutagen/mutagen
 brew install ripgrep fd
@@ -19,6 +20,10 @@ brew install knockknock
 brew install lima
 #brew install dockutil
 #brew install google-chrome librewolf
+brew install docker
+brew install docker-buildx docker-compose
+brew install telegram
+
 
 
 set +x
