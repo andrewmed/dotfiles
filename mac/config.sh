@@ -10,6 +10,7 @@ set -x
 # defaults write -g QLPanelAnimationDuration -float 0
 # defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
