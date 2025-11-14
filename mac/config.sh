@@ -18,7 +18,7 @@ defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 # defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-defaults write com.apple.CrashReporter DialogType none	
+defaults write com.apple.CrashReporter DialogType none
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 #defaults write -g WebKitDeveloperExtras -bool true
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
@@ -36,7 +36,7 @@ defaults write com.apple.dock springboard-hide-duration -float 0
 defaults write com.apple.dock springboard-page-duration -float 0
 defaults write com.apple.dock springboard-show-duration -float 0
 defaults write com.apple.dock workspaces-edge-delay -float 0
-defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES	
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 defaults write com.apple.dock wvous-bl-corner -int 4 # Desktop
 # defaults write com.apple.dock wvous-bl-modifier -int 0
 # defaults write com.apple.dock wvous-tr-corner -int 13

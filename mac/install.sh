@@ -2,6 +2,7 @@ set +e
 set -x
 
 brew install maccy
+brew install brave-browser
 brew install jq
 brew install mutagen-io/mutagen/mutagen
 brew install ripgrep fd
