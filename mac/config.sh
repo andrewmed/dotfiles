@@ -61,7 +61,7 @@ sudo tmutil disable
 # Stop Responding to Key Presses itunes
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
-NAME=macbook # FIXME
+NAME=air # FIXME
 osascript -e 'tell application "System Preferences" to quit'
 spctl developer-mode enable-terminal
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NAME
