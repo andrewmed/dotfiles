@@ -1,24 +1,25 @@
-set -e
+set +e
 set -x
 
-brew install ripgrep fd tree wget
-brew install zed
-brew install vlc
 brew install maccy
+brew install jq
+brew install mutagen-io/mutagen/mutagen
+brew install ripgrep fd
+brew install tree wget zsh-autosuggestions
+brew install vlc
 brew install disk-inventory-x
-brew install zoom
-brew install microsoft-remote-desktop
-brew install firefox
+#brew install microsoft-remote-desktop
+#brew install firefox
 #brew install chromium
 #brew install visual-studio-code
 brew install duti
-brew install zed
 brew install knockknock
-brew install dockutil
-brew install fbreader
-brew install google-chrome librewolf
+brew install lima
+#brew install dockutil
+#brew install google-chrome librewolf
 
 
+set +x
 set_default() {
     duti -s "${1:-"UNKNOWN_APP_ID"}" ".${2:-"UNKNOWN-EXT"}" all
     errcode=$?
@@ -65,6 +66,7 @@ set_default "${CODE_APP}" json
 set_default "${CODE_APP}" kt
 set_default "${CODE_APP}" less
 set_default "${CODE_APP}" log
+set_default "${CODE_APP}" md
 set_default "${CODE_APP}" php
 set_default "${CODE_APP}" plist
 set_default "${CODE_APP}" proto
@@ -80,53 +82,28 @@ set_default "${CODE_APP}" xml
 set_default "${CODE_APP}" yaml
 set_default "${CODE_APP}" yml
 
-for shortcut_label (
-    "Contacts"
-    "FaceTime"
-    "Launchpad"
-    "Mail"
-    "Maps"
-    "Photos"
-    "Podcasts"
-    "Reminders"
-    "TV"
-); do
-    dockutil --remove "${shortcut_label}" --allhomes --no-restart || true
-done
-# clean dock
-dockutil --remove "Maps" --no-restart
-dockutil --remove "FaceTime" --no-restart
-dockutil --remove "Contacts" --no-restart
-dockutil --remove "Calendar" --no-restart
-dockutil --remove "Reminders" --no-restart
-dockutil --remove "Freeform" --no-restart
-dockutil --remove "TV" --no-restart
-dockutil --remove "Music" --no-restart
-dockutil --remove "Photos" --no-restart
-dockutil --remove "Messages" --no-restart
-
 # from appstore: purepaste
-# 
-defaults write com.apple.spotlight orderedItems -array \
-    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-    '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-    '{"enabled" = 0;"name" = "DIRECTORIES";}' \
-    '{"enabled" = 0;"name" = "PDF";}' \
-    '{"enabled" = 0;"name" = "FONTS";}' \
-    '{"enabled" = 0;"name" = "DOCUMENTS";}' \
-    '{"enabled" = 0;"name" = "MESSAGES";}' \
-    '{"enabled" = 0;"name" = "CONTACT";}' \
-    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
-    '{"enabled" = 0;"name" = "IMAGES";}' \
-    '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-    '{"enabled" = 0;"name" = "MUSIC";}' \
-    '{"enabled" = 0;"name" = "MOVIES";}' \
-    '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-    '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-    '{"enabled" = 0;"name" = "SOURCE";}' \
-    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
-    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-    '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+#
+# defaults write com.apple.spotlight orderedItems -array \
+    # '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+    # '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+    # '{"enabled" = 0;"name" = "DIRECTORIES";}' \
+    # '{"enabled" = 0;"name" = "PDF";}' \
+    # '{"enabled" = 0;"name" = "FONTS";}' \
+    # '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+    # '{"enabled" = 0;"name" = "MESSAGES";}' \
+    # '{"enabled" = 0;"name" = "CONTACT";}' \
+    # '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+    # '{"enabled" = 0;"name" = "IMAGES";}' \
+    # '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+    # '{"enabled" = 0;"name" = "MUSIC";}' \
+    # '{"enabled" = 0;"name" = "MOVIES";}' \
+    # '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+    # '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+    # '{"enabled" = 0;"name" = "SOURCE";}' \
+    # '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+    # '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+    # '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+    # '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+    # '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+    # '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
