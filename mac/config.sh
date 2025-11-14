@@ -1,13 +1,13 @@
 set -x
-# defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
-# defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
-# defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
-# defaults write -g NSScrollAnimationEnabled -bool false
-# defaults write -g NSScrollViewRubberbanding -bool false
-# defaults write -g NSToolbarFullScreenAnimationDuration -float 0
-# defaults write -g NSToolbarTitleViewRolloverDelay -float 0
-# defaults write -g NSWindowResizeTime -float 0.001
-# defaults write -g QLPanelAnimationDuration -float 0
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
+defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+defaults write -g NSScrollAnimationEnabled -bool false
+defaults write -g NSScrollViewRubberbanding -bool false
+defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+defaults write -g NSToolbarTitleViewRolloverDelay -float 0
+defaults write -g NSWindowResizeTime -float 0.001
+defaults write -g QLPanelAnimationDuration -float 0
 # defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
@@ -16,6 +16,18 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSAutomaticTextCompletionEnabled -bool false
+
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 3
+
 # defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none
@@ -52,6 +64,7 @@ defaults write com.apple.mail ConversationViewSortDescending -bool true
 defaults write com.apple.mail SendFormat Plain
 defaults write com.apple.universalaccess reduceTransparency -bool true
 defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+defaults write -g com.apple.trackpad.forceClick -bool false
 
 #defaults write com.apple.screencapture show-thumbnail -bool FALSE
 #chflags nohidden ~/Library
