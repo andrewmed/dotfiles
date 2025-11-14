@@ -2,5 +2,5 @@
 
 git clone --bare git@github.com:andrewmed/dotfiles.git $HOME/.cfg
 alias home='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-config --local status.showUntrackedFiles no
+home config --local status.showUntrackedFiles no
 home checkout
