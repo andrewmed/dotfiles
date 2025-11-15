@@ -6,6 +6,8 @@ brew install brave-browser
 brew install zed
 brew install gh
 brew install jq
+brew install go
+brew install v2ray
 brew install mutagen-io/mutagen/mutagen
 brew install ripgrep fd
 brew install tree wget zsh-autosuggestions
@@ -23,7 +25,8 @@ brew install lima
 brew install docker
 brew install docker-buildx docker-compose
 brew install telegram
-
+brew install handy
+brew install google-drive
 
 
 set +x

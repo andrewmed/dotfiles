@@ -93,3 +93,33 @@ sudo scutil --set LocalHostName $NAME
 #sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs JoinMode=Strongest
 #sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs JoinModeFallback=KeepLooking
 # set mtu lower
+#
+#
+defaults write com.apple.Spotlight orderedItems -array \
+  '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+  '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+  '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+  '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+  '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
+  '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+  '{"enabled" = 0;"name" = "DIRECTORIES";}' \
+  '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+  '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+  '{"enabled" = 0;"name" = "PDF";}' \
+  '{"enabled" = 0;"name" = "MESSAGES";}' \
+  '{"enabled" = 0;"name" = "CONTACT";}' \
+  '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+  '{"enabled" = 0;"name" = "IMAGES";}' \
+  '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+  '{"enabled" = 0;"name" = "MUSIC";}' \
+  '{"enabled" = 0;"name" = "MOVIES";}' \
+  '{"enabled" = 0;"name" = "FONTS";}' \
+  '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+  '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+  '{"enabled" = 0;"name" = "TIPS";}'
+  killall Spotlight
+
+
+  sudo tee /etc/pam.d/sudo_local <<EOF
+  auth       sufficient     pam_tid.so
+  EOF
