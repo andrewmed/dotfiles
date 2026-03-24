@@ -27,6 +27,7 @@ brew install docker-buildx docker-compose
 brew install telegram
 brew install handy
 brew install google-drive
+brew install git-delta
 
 
 set +x
