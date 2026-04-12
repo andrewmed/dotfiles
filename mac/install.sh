@@ -1,15 +1,23 @@
 set +e
 set -x
 
+brew install cmake
+brew install delve
 brew install maccy
 brew install brave-browser
 brew install zed
 brew install gh
 brew install jq
 brew install go
+brew install gperf
 brew install v2ray
 brew install mutagen-io/mutagen/mutagen
 brew install ripgrep fd
+brew install micro
+brew install node
+#brew install ollama
+brew install python@3.10
+brew install tmux
 brew install tree wget zsh-autosuggestions
 brew install vlc
 brew install disk-inventory-x
@@ -28,6 +36,8 @@ brew install telegram
 brew install handy
 brew install google-drive
 brew install git-delta
+brew install websocat
+brew install zoxide
 
 
 set +x
