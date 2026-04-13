@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -x
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
@@ -19,7 +20,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 3
 defaults write -g com.apple.keyboard.fnState -bool true
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 #defaults write -g WebKitDeveloperExtras -bool true
@@ -48,7 +49,7 @@ defaults write com.apple.finder FXDefaultSearchScope SCcf
 defaults write com.apple.finder FXEnableExtensionsChangeWarning -bool false
 defaults write com.apple.finder FXPreferredViewStyle -string clmv
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write -g AppleShowAllExtensions -bool true
 #defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
 defaults write com.apple.mail ConversationViewSortDescending -bool true
 defaults write com.apple.mail SendFormat Plain
@@ -65,17 +66,21 @@ sudo tmutil disable
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
 NAME="${1:-$(scutil --get ComputerName)}"
+if [ -z "$NAME" ]; then
+  echo "ERROR: No hostname provided and ComputerName not set" >&2
+  exit 1
+fi
 osascript -e 'tell application "System Preferences" to quit'
 spctl developer-mode enable-terminal
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$NAME"
 #sudo nvram StartupMute=%01
 
 #Spotlight
 #sudo mdutil -i off -d /Volumes
 #sudo mdutil -a -i off
 
-sudo scutil --set ComputerName $NAME
-sudo scutil --set LocalHostName $NAME
+sudo scutil --set ComputerName "$NAME"
+sudo scutil --set LocalHostName "$NAME"
 
 # /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs
 # /Library/Preferences/SystemConfiguration/preferences.plist
@@ -104,13 +109,14 @@ defaults write com.apple.Spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "MUSIC";}' \
   '{"enabled" = 0;"name" = "MOVIES";}' \
   '{"enabled" = 0;"name" = "FONTS";}' \
+  '{"enabled" = 0;"name" = "SOURCE";}' \
   '{"enabled" = 0;"name" = "MENU_OTHER";}' \
   '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
   '{"enabled" = 0;"name" = "TIPS";}'
 # Restart Spotlight indexing to pick up changes
-killall mds
+sudo killall mds
 
 
-sudo tee /etc/pam.d/sudo_local <<EOF
+sudo tee /etc/pam.d/sudo_local > /dev/null <<EOF
 auth       sufficient     pam_tid.so
 EOF
