@@ -45,9 +45,9 @@ All 20 categories are disabled (enabled=0), including APPLICATIONS. This makes S
 **Bug 5 - Potentially outdated launchctl command (line 76):**
 `launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist` may fail on modern macOS due to SIP protection. Consider removing or wrapping with a check.
 
-- [ ] Fix heredoc indentation for sudo_local PAM config
-- [ ] Remove duplicate NSGlobalDomain/-g defaults block (lines 20-27)
-- [ ] Dedent killall Spotlight, consider changing to killall mds
-- [ ] Decide Spotlight policy: re-enable APPLICATIONS category or remove the duplicate config from install.sh
-- [ ] Remove or comment the launchctl rcd.plist line with a note about SIP
-- [ ] Parameterize NAME variable (currently hardcoded as "air")
+- [x] Fix heredoc indentation for sudo_local PAM config
+- [x] Remove duplicate NSGlobalDomain/-g defaults block (lines 20-27)
+- [x] Dedent killall Spotlight, consider changing to killall mds
+- [x] Decide Spotlight policy: re-enable APPLICATIONS category or remove the duplicate config from install.sh
+- [x] Remove or comment the launchctl rcd.plist line with a note about SIP
+- [x] Parameterize NAME variable (currently hardcoded as "air")

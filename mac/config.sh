@@ -9,26 +9,15 @@ defaults write -g NSToolbarTitleViewRolloverDelay -float 0
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write -g QLPanelAnimationDuration -float 0
 # defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
-defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
-
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
 defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g NSAutomaticTextCompletionEnabled -bool false
-
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 3
-
-defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write -g com.apple.keyboard.fnState -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none
@@ -64,7 +53,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.mail ConversationViewSortDescending -bool true
 defaults write com.apple.mail SendFormat Plain
 defaults write com.apple.universalaccess reduceTransparency -bool true
-defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
 defaults write -g com.apple.trackpad.forceClick -bool false
 
 #defaults write com.apple.screencapture show-thumbnail -bool FALSE
@@ -73,9 +61,10 @@ defaults write -g com.apple.trackpad.forceClick -bool false
 sudo tmutil disable
 
 # Stop Responding to Key Presses itunes
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+# Disabled: fails on modern macOS due to SIP protecting /System paths
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
-NAME=air # FIXME
+NAME="${1:-$(scutil --get ComputerName)}"
 osascript -e 'tell application "System Preferences" to quit'
 spctl developer-mode enable-terminal
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $NAME
@@ -96,11 +85,12 @@ sudo scutil --set LocalHostName $NAME
 #
 #
 defaults write com.apple.Spotlight orderedItems -array \
+  '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+  '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
   '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
   '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
   '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
   '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-  '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
   '{"enabled" = 0;"name" = "DOCUMENTS";}' \
   '{"enabled" = 0;"name" = "DIRECTORIES";}' \
   '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
@@ -117,9 +107,10 @@ defaults write com.apple.Spotlight orderedItems -array \
   '{"enabled" = 0;"name" = "MENU_OTHER";}' \
   '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
   '{"enabled" = 0;"name" = "TIPS";}'
-  killall Spotlight
+# Restart Spotlight indexing to pick up changes
+killall mds
 
 
-  sudo tee /etc/pam.d/sudo_local <<EOF
-  auth       sufficient     pam_tid.so
-  EOF
+sudo tee /etc/pam.d/sudo_local <<EOF
+auth       sufficient     pam_tid.so
+EOF
