@@ -65,28 +65,25 @@ sudo tmutil disable
 # Disabled: fails on modern macOS due to SIP protecting /System paths
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
-NAME="${1:-$(scutil --get ComputerName)}"
-if [ -z "$NAME" ]; then
-  echo "ERROR: No hostname provided and ComputerName not set" >&2
-  exit 1
+NAME="${1:-$(scutil --get ComputerName 2>/dev/null)}"
+if [ -n "$NAME" ]; then
+  # Sanitize: strip non-alnum, collapse hyphens
+  SANITIZED=$(printf '%s' "$NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//')
+  LOCAL_HOST_NAME=$(printf '%s' "$SANITIZED" | cut -c1-63 | sed 's/-$//')
+  NETBIOS_NAME=$(printf '%s' "$SANITIZED" | cut -c1-15 | sed 's/-$//')
+  if [ -n "$LOCAL_HOST_NAME" ]; then
+    osascript -e 'tell application "System Preferences" to quit'
+    sudo spctl developer-mode enable-terminal
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$NETBIOS_NAME"
+    #sudo nvram StartupMute=%01
+    sudo scutil --set ComputerName "$NAME"
+    sudo scutil --set LocalHostName "$LOCAL_HOST_NAME"
+  else
+    echo "WARNING: Could not derive a valid hostname from '$NAME', skipping hostname config" >&2
+  fi
+else
+  echo "WARNING: No hostname provided and ComputerName not set, skipping hostname config" >&2
 fi
-# Sanitize for LocalHostName/NetBIOSName: strip non-alnum, collapse hyphens, truncate
-HOST_NAME=$(printf '%s' "$NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//' | cut -c1-15 | sed 's/-$//')
-if [ -z "$HOST_NAME" ]; then
-  echo "ERROR: Could not derive a valid hostname from '$NAME'" >&2
-  exit 1
-fi
-osascript -e 'tell application "System Preferences" to quit'
-spctl developer-mode enable-terminal
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$HOST_NAME"
-#sudo nvram StartupMute=%01
-
-#Spotlight
-#sudo mdutil -i off -d /Volumes
-#sudo mdutil -a -i off
-
-sudo scutil --set ComputerName "$NAME"
-sudo scutil --set LocalHostName "$HOST_NAME"
 
 # /System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport prefs
 # /Library/Preferences/SystemConfiguration/preferences.plist
