@@ -1,43 +1,17 @@
 set +e
 set -x
 
-brew install cmake
-brew install delve
-brew install maccy
-brew install brave-browser
-brew install zed
-brew install gh
-brew install jq
-brew install go
-brew install gperf
-brew install v2ray
+brew tap mutagen-io/mutagen
+brew tap umputun/apps
+
+brew install agent-browser ansible cmake delve docker docker-buildx docker-compose duti fd fzf gh git-delta go gperf herdr jq lima nmap node ollama pandoc python@3.10 qpdf ripgrep shellcheck tabiew tmux tree ttyd uv wget websocat wireguard-tools zoxide zsh-autosuggestions
 brew install mutagen-io/mutagen/mutagen
-brew install ripgrep fd
-brew install micro
-brew install node
-#brew install ollama
-brew install python@3.10
-brew install tmux
-brew install tree wget zsh-autosuggestions
-brew install vlc
-brew install disk-inventory-x
+brew install umputun/apps/fya umputun/apps/mpt umputun/apps/ralphex umputun/apps/revdiff
+
+brew install --cask umputun/apps/agterm android-platform-tools audacity brave-browser claude-code codex disk-inventory-x google-drive grok-build handy knockknock maccy openmtp revmux the-unarchiver tor-browser utm vlc zed
 #brew install microsoft-remote-desktop
-#brew install firefox
-#brew install chromium
+
 #brew install visual-studio-code
-brew install duti
-brew install knockknock
-brew install lima
-#brew install dockutil
-#brew install google-chrome librewolf
-brew install docker
-brew install docker-buildx docker-compose
-brew install telegram
-brew install handy
-brew install google-drive
-brew install git-delta
-brew install websocat
-brew install zoxide
 
 
 set +x
@@ -52,7 +26,7 @@ set_default() {
 # Find AppID: osascript -e 'id of app "VLC"'
 VIDEO_APP=org.videolan.vlc
 AUDIO_APP=org.videolan.vlc
-#CODE_APP=com.microsoft.VSCode
+CODE_APP=dev.zed.Zed
 
 # Video
 set_default "${VIDEO_APP}" avi
@@ -71,6 +45,7 @@ set_default "${AUDIO_APP}" m3u
 set_default "${AUDIO_APP}" pls
 
 CODE_APP=dev.zed.Zed
+for ext in astro cjs cs dart diff fish gql graphql hcl htm html jsx mjs patch rb rs scss svelte swift tf tfvars tsx vue xml yaml yml; do set_default "${CODE_APP}" "${ext}"; done
 #Code
 set_default "${CODE_APP}" asm
 set_default "${CODE_APP}" c
