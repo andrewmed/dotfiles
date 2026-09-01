@@ -92,32 +92,49 @@ fi
 # set mtu lower
 #
 #
-defaults write com.apple.Spotlight orderedItems -array \
-  '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-  '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-  '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
-  '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-  '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-  '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-  '{"enabled" = 0;"name" = "DOCUMENTS";}' \
-  '{"enabled" = 0;"name" = "DIRECTORIES";}' \
-  '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-  '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-  '{"enabled" = 0;"name" = "PDF";}' \
-  '{"enabled" = 0;"name" = "MESSAGES";}' \
-  '{"enabled" = 0;"name" = "CONTACT";}' \
-  '{"enabled" = 0;"name" = "EVENT_TODO";}' \
-  '{"enabled" = 0;"name" = "IMAGES";}' \
-  '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-  '{"enabled" = 0;"name" = "MUSIC";}' \
-  '{"enabled" = 0;"name" = "MOVIES";}' \
-  '{"enabled" = 0;"name" = "FONTS";}' \
-  '{"enabled" = 0;"name" = "SOURCE";}' \
-  '{"enabled" = 0;"name" = "MENU_OTHER";}' \
-  '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-  '{"enabled" = 0;"name" = "TIPS";}'
-# Restart Spotlight indexing to pick up changes
-sudo killall mds
+# Old-style plist literals have no number type, so `defaults write -array` would store
+# "enabled" as a string and the Spotlight settings pane fails to render. -json gives
+# real integers. SearchResults is the key macOS reads; orderedItems only sets the order.
+spotlight_plist=~/Library/Preferences/com.apple.Spotlight.plist
+
+plutil -replace orderedItems -json '[
+  {"enabled":1,"name":"APPLICATIONS"},
+  {"enabled":1,"name":"SYSTEM_PREFS"},
+  {"enabled":0,"name":"MENU_SPOTLIGHT_SUGGESTIONS"},
+  {"enabled":0,"name":"MENU_CONVERSION"},
+  {"enabled":0,"name":"MENU_EXPRESSION"},
+  {"enabled":0,"name":"MENU_DEFINITION"},
+  {"enabled":0,"name":"DOCUMENTS"},
+  {"enabled":0,"name":"DIRECTORIES"},
+  {"enabled":0,"name":"PRESENTATIONS"},
+  {"enabled":0,"name":"SPREADSHEETS"},
+  {"enabled":0,"name":"PDF"},
+  {"enabled":0,"name":"MESSAGES"},
+  {"enabled":0,"name":"CONTACT"},
+  {"enabled":0,"name":"EVENT_TODO"},
+  {"enabled":0,"name":"IMAGES"},
+  {"enabled":0,"name":"BOOKMARKS"},
+  {"enabled":0,"name":"MUSIC"},
+  {"enabled":0,"name":"MOVIES"},
+  {"enabled":0,"name":"FONTS"},
+  {"enabled":0,"name":"SOURCE"},
+  {"enabled":0,"name":"MENU_OTHER"},
+  {"enabled":0,"name":"TIPS"}
+]' "$spotlight_plist"
+
+plutil -replace SearchResults -json '{
+  "APPLICATIONS":1, "SYSTEM_PREFS":1,
+  "MENU_SPOTLIGHT_SUGGESTIONS":0, "MENU_CONVERSION":0, "MENU_EXPRESSION":0,
+  "MENU_DEFINITION":0, "MENU_OTHER":0,
+  "DOCUMENTS":0, "DIRECTORIES":0, "PRESENTATIONS":0, "SPREADSHEETS":0, "PDF":0,
+  "MESSAGES":0, "CONTACT":0, "EVENT_TODO":0, "EVENTS":0, "IMAGES":0,
+  "BOOKMARKS":0, "MUSIC":0, "MOVIES":0, "FONTS":0, "SOURCE":0,
+  "HISTORY":0, "TIPS":0
+}' "$spotlight_plist"
+
+# plutil edits the file behind cfprefsd, which would otherwise flush its cache back over it
+killall cfprefsd
+killall Spotlight
 
 
 sudo tee /etc/pam.d/sudo_local > /dev/null <<EOF
