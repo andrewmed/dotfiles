@@ -77,6 +77,3 @@ set_default "${CODE_APP}" txt
 set_default "${CODE_APP}" xml
 set_default "${CODE_APP}" yaml
 set_default "${CODE_APP}" yml
-
-# from appstore: purepaste
-# Spotlight config is in config.sh
