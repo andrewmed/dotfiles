@@ -22,7 +22,7 @@ defaults write -g KeyRepeat -int 3
 defaults write -g com.apple.keyboard.fnState -bool true
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.CrashReporter DialogType none
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+#defaults write com.apple.LaunchServices LSQuarantine -bool false
 #defaults write -g WebKitDeveloperExtras -bool true
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
