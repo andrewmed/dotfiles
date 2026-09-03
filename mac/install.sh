@@ -4,11 +4,11 @@ set -x
 brew tap mutagen-io/mutagen
 brew tap umputun/apps
 
-brew install agent-browser ansible cmake delve docker docker-buildx docker-compose duti fd fzf gh git-delta go gperf herdr jq lima nmap node ollama pandoc python@3.10 qpdf ripgrep shellcheck tabiew tmux tree ttyd uv wget websocat wireguard-tools zoxide zsh-autosuggestions
+brew install agent-browser ansible cmake codex delve docker docker-buildx docker-compose duti fd fzf gh git-delta go gperf herdr jq lima nmap node ollama pandoc python@3.10 qpdf revmux ripgrep shellcheck tabiew tmux tree ttyd uv wget websocat wireguard-tools zoxide zsh-autosuggestions
 brew install mutagen-io/mutagen/mutagen
 brew install umputun/apps/ralphex umputun/apps/revdiff
 
-brew install --cask umputun/apps/agterm android-platform-tools audacity brave-browser claude-code codex disk-inventory-x google-drive grok-build handy knockknock maccy revmux the-unarchiver utm vlc zed
+brew install --cask umputun/apps/agterm android-platform-tools audacity brave-browser disk-inventory-x google-drive handy knockknock the-unarchiver utm vlc zed
 
 #brew install microsoft-remote-desktop
 #brew install visual-studio-code
