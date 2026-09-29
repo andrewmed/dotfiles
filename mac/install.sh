@@ -32,4 +32,4 @@ for ext in avi flv m2ts mkv mov mp4 mpeg mpg mts ogv ts vob webm wmv; do set_def
 for ext in aac ac3 aif aiff alac amr ape au caf flac m3u m4a m4b mid midi mp3 oga ogg opus pls wav wma; do set_default "${AUDIO_APP}" "${ext}"; done
 
 CODE_APP=dev.zed.Zed
-for ext in asm awk c cc clj cljs conf cpp cs css csv cts cxx dart diff el erl ex exs fish fs fsx go gql graphql gradle groovy h hpp htm hxx html ini ipynb java jl js json json5 jsonl jsx kt less log lua m m4 make md mdx mjs nim nix patch php plist proto ps1 py r rb rs rtf sass scala scss sh sql swift terraform tex tf tfvars ts tsx txt vala vb vue wasm xml yaml yml zig; do set_default "${CODE_APP}" "${ext}"; done
+for ext in asm awk c cc clj cljs conf cpp cs css csv cts cxx dart diff el erl ex exs fish fs fsx go gql graphql gradle groovy h hpp hxx ini ipynb java jl js json json5 jsonl jsx kt less log lua m m4 make md mdx mjs nim nix patch php plist proto ps1 py r rb rs rtf sass scala scss sh sql swift terraform tex tf tfvars ts tsx txt vala vb vue wasm xml yaml yml zig; do set_default "${CODE_APP}" "${ext}"; done

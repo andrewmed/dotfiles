@@ -36,6 +36,7 @@ run_ollama() {
 	export OLLAMA_KEEP_ALIVE=1h
 	export OLLAMA_KV_CACHE_TYPE=q8_0
 	export OLLAMA_MAX_LOADED_MODELS=1
+	(sleep 5; ollama run gemma4:e4b-mlx "" >/dev/null 2>&1) &
 	exec ollama serve
 }
 
