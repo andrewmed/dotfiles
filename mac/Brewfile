@@ -1,0 +1,140 @@
+tap "mutagen-io/mutagen"
+tap "umputun/apps", trusted: true
+tap "x13a/tap"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# Incredibly fast JavaScript runtime, bundler, test runner, and package manager
+brew "bun"
+# Cross-platform make
+brew "cmake"
+# Debugger for the Go programming language
+brew "delve"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Perfect hash function generator
+brew "gperf"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Linux virtual machines
+brew "lima"
+# Modern and intuitive terminal-based text editor
+brew "micro"
+# Port scanning utility for large networks
+brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Adds an OCR text layer to scanned PDF files
+brew "ocrmypdf"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Display and control your Android device
+brew "scrcpy"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# TUI to view and query tabular files (CSV,TSV, Parquet, etc.)
+brew "tabiew"
+# Terminal multiplexer
+brew "tmux"
+# Command-line tool for sharing terminal over the web
+brew "ttyd"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Command-line client for WebSockets
+brew "websocat"
+# Internet file retriever
+brew "wget"
+# Userspace Go implementation of WireGuard
+brew "wireguard-go"
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fast file synchronization and network forwarding for remote development
+brew "mutagen-io/mutagen/mutagen", trusted: true
+# Claude Code print-mode wrapper backed by an interactive PTY session
+brew "umputun/apps/fya", trusted: true
+# Autonomous plan execution with Claude Code
+brew "umputun/apps/ralphex", trusted: true
+# TUI for reviewing diffs, files, and documents with inline annotations
+brew "umputun/apps/revdiff", trusted: true
+# Check for suspicious processes on macOS
+brew "x13a/tap/pschk", trusted: true
+# Terminal on libghostty with a workspace/session sidebar
+cask "umputun/apps/agterm", trusted: true
+# Android SDK component
+cask "android-platform-tools"
+# Multi-track audio editor and recorder
+cask "audacity"
+# Web browser focusing on privacy
+cask "brave-browser"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Disk usage utility
+cask "disk-inventory-x"
+# Client for the Google Drive storage service
+cask "google-drive"
+# Extensible coding agent for the terminal
+cask "grok-build"
+# Speech to text application
+cask "handy"
+# Tool to show what is persistently installed on the computer
+cask "knockknock"
+# Clipboard manager
+cask "maccy"
+# Full-featured and concise ChartPlotter/Navigator
+cask "opencpn"
+# Android file transfer
+cask "openmtp"
+# Supervised multi-agent code review with parallel claude and codex subprocesses
+cask "umputun/apps/revmux", trusted: true
+# Unpacks archive files
+cask "the-unarchiver"
+# Virtual machines UI using QEMU
+cask "utm"
+# Multimedia player
+cask "vlc"
+# Multiplayer code editor
+cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
+go "github.com/mark3labs/mcp-filesystem-server"
+uv "huggingface-runner"
+uv "mdformat", with: ["mdformat-frontmatter", "mdformat-gfm"]
+npm "@earendil-works/pi-coding-agent"
+npm "agent-browser"
