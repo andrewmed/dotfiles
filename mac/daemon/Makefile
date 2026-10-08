@@ -20,6 +20,17 @@ uninstall:
 	done
 
 status:
+	@printf '%-10s %-11s %-5s %s\n' SERVICE AGENT EXIT PID
 	@for s in $(SERVICES); do \
-		launchctl list | grep org.andmed.$$s || echo "org.andmed.$$s: not loaded"; \
+		case $$s in \
+			sing-box) proc='sing-box run' ;; \
+			ollama) proc='ollama serve' ;; \
+			limactl) proc='limactl hostagent' ;; \
+			mutagen) proc='mutagen daemon run' ;; \
+			*) proc=$$s ;; \
+		esac; \
+		code=$$(launchctl list | awk -v l=org.andmed.$$s '$$3 == l { print $$2 }'); \
+		[ -n "$$code" ] && agent=loaded || agent='not loaded'; \
+		pid=$$(pgrep -f "$$proc" | paste -sd, -); \
+		printf '%-10s %-11s %-5s %s\n' "$$s" "$$agent" "$${code:--}" "$${pid:--}"; \
 	done
