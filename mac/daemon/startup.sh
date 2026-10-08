@@ -70,6 +70,7 @@ run_once() {
 }
 
 run_once lima limactl start docker
+run_once mutagen mutagen daemon start
 
 start sing-box sing-box run_sing_box
 start ollama ollama run_ollama
