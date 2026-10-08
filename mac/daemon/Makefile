@@ -1,8 +1,17 @@
 DOMAIN := gui/$(shell id -u)
 AGENTS := $(HOME)/Library/LaunchAgents
-SERVICES := sing-box ollama limactl mutagen
+override SERVICES := sing-box ollama limactl mutagen
 
-.PHONY: install uninstall status
+# In `make log <service>` make sees the service as a second goal; give it an empty rule.
+ifeq ($(firstword $(MAKECMDGOALS)),log)
+SERVICE := $(word 2,$(MAKECMDGOALS))
+ifneq ($(SERVICE),)
+$(SERVICE):
+	@:
+endif
+endif
+
+.PHONY: install uninstall status logs log
 
 install: uninstall
 	mkdir -p $(AGENTS)
@@ -34,3 +43,10 @@ status:
 		pid=$$(pgrep -f "$$proc" | paste -sd, -); \
 		printf '%-10s %-11s %-5s %s\n' "$$s" "$$agent" "$${code:--}" "$${pid:--}"; \
 	done
+
+logs:
+	tail -n 20 $(foreach s,$(SERVICES),$(HOME)/Library/Logs/$(s).log)
+
+log:
+	@test -n "$(filter $(SERVICE),$(SERVICES))" || { echo "usage: make log <service>, one of: $(SERVICES)"; exit 1; }
+	tail -n 20 -F $(HOME)/Library/Logs/$(SERVICE).log

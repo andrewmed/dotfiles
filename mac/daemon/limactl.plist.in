@@ -21,8 +21,8 @@
 	<key>AbandonProcessGroup</key>
 	<true/>
 	<key>StandardOutPath</key>
-	<string>__HOME__/Library/Logs/lima.log</string>
+	<string>__HOME__/Library/Logs/limactl.log</string>
 	<key>StandardErrorPath</key>
-	<string>__HOME__/Library/Logs/lima.log</string>
+	<string>__HOME__/Library/Logs/limactl.log</string>
 </dict>
 </plist>
