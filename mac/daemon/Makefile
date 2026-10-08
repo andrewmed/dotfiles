@@ -1,25 +1,25 @@
-LABEL := org.andmed.startup
 DOMAIN := gui/$(shell id -u)
-PLIST := $(HOME)/Library/LaunchAgents/$(LABEL).plist
-LOG := $(HOME)/Library/Logs/$(LABEL).log
+AGENTS := $(HOME)/Library/LaunchAgents
+SERVICES := sing-box ollama limactl mutagen
 
 .PHONY: install uninstall status
 
 install: uninstall
-	chmod +x $(CURDIR)/startup.sh
-	mkdir -p $(dir $(PLIST))
-	sed -e 's|__LABEL__|$(LABEL)|g' \
-	    -e 's|__SCRIPT__|$(CURDIR)/startup.sh|g' \
-	    -e 's|__LOG__|$(LOG)|g' \
-	    agent.plist.in > $(PLIST)
-	launchctl bootstrap $(DOMAIN) $(PLIST)
+	mkdir -p $(AGENTS)
+	@for s in $(SERVICES); do \
+		bin=$$(command -v $$s) || { echo "$$s: not on PATH, skipped"; continue; }; \
+		sed -e "s|__BIN__|$$bin|g" -e "s|__HOME__|$(HOME)|g" $$s.plist.in > $(AGENTS)/org.andmed.$$s.plist; \
+		launchctl bootstrap $(DOMAIN) $(AGENTS)/org.andmed.$$s.plist; \
+	done
 
 uninstall:
-	-launchctl bootout $(DOMAIN)/$(LABEL) 2>/dev/null
-	@while launchctl print $(DOMAIN)/$(LABEL) >/dev/null 2>&1; do sleep 1; done
-	rm -f $(PLIST)
+	@for s in $(SERVICES); do \
+		launchctl bootout $(DOMAIN)/org.andmed.$$s 2>/dev/null; \
+		while launchctl print $(DOMAIN)/org.andmed.$$s >/dev/null 2>&1; do sleep 1; done; \
+		rm -f $(AGENTS)/org.andmed.$$s.plist; \
+	done
 
 status:
-	@launchctl list | grep $(LABEL) || echo "$(LABEL): not loaded"
-	@pgrep -fl "startup.sh|sing-box run|ollama serve" || echo "no services running"
-	@tail -5 $(LOG)
+	@for s in $(SERVICES); do \
+		launchctl list | grep org.andmed.$$s || echo "org.andmed.$$s: not loaded"; \
+	done

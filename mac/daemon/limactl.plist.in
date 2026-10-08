@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>org.andmed.limactl</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>__BIN__</string>
+		<string>start</string>
+		<string>docker</string>
+	</array>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<!-- The VM outlives this one-shot job; without this launchd kills it on exit. -->
+	<key>AbandonProcessGroup</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>__HOME__/Library/Logs/lima.log</string>
+	<key>StandardErrorPath</key>
+	<string>__HOME__/Library/Logs/lima.log</string>
+</dict>
+</plist>

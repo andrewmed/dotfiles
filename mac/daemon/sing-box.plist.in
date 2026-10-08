@@ -3,11 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>__LABEL__</string>
+	<string>org.andmed.sing-box</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>__SCRIPT__</string>
+		<string>__BIN__</string>
+		<string>run</string>
+		<string>-c</string>
+		<string>client.json</string>
 	</array>
+	<key>WorkingDirectory</key>
+	<string>__HOME__/code/proxy/sing-box</string>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>KeepAlive</key>
@@ -15,8 +20,8 @@
 	<key>ThrottleInterval</key>
 	<integer>30</integer>
 	<key>StandardOutPath</key>
-	<string>__LOG__</string>
+	<string>__HOME__/Library/Logs/sing-box.log</string>
 	<key>StandardErrorPath</key>
-	<string>__LOG__</string>
+	<string>__HOME__/Library/Logs/sing-box.log</string>
 </dict>
 </plist>
