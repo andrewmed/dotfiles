@@ -46,7 +46,7 @@ status:
 	done
 
 logs:
-	tail -n 20 $(foreach s,$(SERVICES),$(HOME)/Library/Logs/$(s).log)
+	tail -n 10 $(foreach s,$(SERVICES),$(HOME)/Library/Logs/$(s).log)
 
 log:
 	@test -n "$(filter $(SERVICE),$(SERVICES))" || { echo "usage: make log <service>, one of: $(SERVICES)"; exit 1; }
