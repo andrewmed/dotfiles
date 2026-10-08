@@ -13,16 +13,17 @@ endif
 
 .PHONY: install uninstall status logs log
 
+# ollama.preload runs the ollama program, so look up the name before the dot.
 install: uninstall
 	mkdir -p $(AGENTS)
-	@for s in $(SERVICES); do \
-		bin=$$(command -v $$s) || { echo "$$s: not on PATH, skipped"; continue; }; \
+	@for s in $(SERVICES) ollama.preload; do \
+		bin=$$(command -v $${s%.*}) || { echo "$$s: not on PATH, skipped"; continue; }; \
 		sed -e "s|__BIN__|$$bin|g" -e "s|__HOME__|$(HOME)|g" $$s.plist.in > $(AGENTS)/org.andmed.$$s.plist; \
 		launchctl bootstrap $(DOMAIN) $(AGENTS)/org.andmed.$$s.plist; \
 	done
 
 uninstall:
-	@for s in $(SERVICES); do \
+	@for s in $(SERVICES) ollama.preload; do \
 		launchctl bootout $(DOMAIN)/org.andmed.$$s 2>/dev/null; \
 		while launchctl print $(DOMAIN)/org.andmed.$$s >/dev/null 2>&1; do sleep 1; done; \
 		rm -f $(AGENTS)/org.andmed.$$s.plist; \
